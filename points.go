@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-const PointsActionTopicPrefix = "channel-points-channel-v1."
+const pointsActionTopicPrefix = "channel-points-channel-v1."
 
 // ModerationAction describes an incoming "Moderation" action coming from Twitch's PubSub servers
 type PointsAction struct {

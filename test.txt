@@ -3,4 +3,9 @@
 ../../go/pkg/mod/github.com/epiclemonaid/pubsub@v0.0.0-20200822190947-656e2feeb79c/client.go:130:6: c.onPointsAction undefined (type *Client has no field or method onPointsAction, but does have OnPointsAction)
 ../../go/pkg/mod/github.com/epiclemonaid/pubsub@v0.0.0-20200822190947-656e2feeb79c/messages.go:20:30: undefined: moderationActionTopicPrefix
 ../../go/pkg/mod/github.com/epiclemonaid/pubsub@v0.0.0-20200822190947-656e2feeb79c/messages.go:26:30: undefined: PointsEventTopicPrefix
-k
+
+../../go/pkg/mod/github.com/epiclemonaid/pubsub@v0.0.0-20200822190947-656e2feeb79c/client.go:92:3: c.onPointsAction undefined (type *Client has no field or method onPointsAction, but does have OnPointsAction)
+../../go/pkg/mod/github.com/epiclemonaid/pubsub@v0.0.0-20200822190947-656e2feeb79c/client.go:130:6: c.onPointsAction undefined (type *Client has no field or method onPointsAction, but does have OnPointsAction)
+../../go/pkg/mod/github.com/epiclemonaid/pubsub@v0.0.0-20200822190947-656e2feeb79c/messages.go:20:30: undefined: moderationActionTopicPrefix
+../../go/pkg/mod/github.com/epiclemonaid/pubsub@v0.0.0-20200822190947-656e2feeb79c/messages.go:26:30: undefined: PointsEventTopicPrefix
+
