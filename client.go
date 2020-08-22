@@ -39,6 +39,7 @@ type messageBusType chan sharedMessage
 type Client struct {
 	// Callbacks
 	onModerationAction func(channelID string, data *ModerationAction)
+	onPointsAction     func(channelID string, data *PointsAction)
 	onBitsEvent        func(channelID string, data *BitsEvent)
 
 	connectionManager *connectionManager

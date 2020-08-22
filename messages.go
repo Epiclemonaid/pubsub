@@ -23,7 +23,7 @@ func getMessageType(topic string) messageType {
 	if strings.HasPrefix(topic, bitsEventTopicPrefix) {
 		return messageTypeBitsEvent
 	}
-	if strings.HasPrefix(topic, PointsEventTopicPrefix) {
+	if strings.HasPrefix(topic, pointsEventTopicPrefix) {
 		return messageTypePointsEvent
 	}
 
