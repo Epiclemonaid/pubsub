@@ -14,7 +14,7 @@ const pointsEventTopicPrefix = "channel-points-channel-v1."
 
 // BitsEvent describes an incoming "Bit" action coming from Twitch's PubSub servers
 type PointsEvent struct {
-	Timestamp   time.time `json:"timestamp"`
+	Timestamp   time.Time `json:"timestamp"`
 	Redemption  string `json:"redemption"`
 	User_input  string `json:"user_input"`
 	Status      string `json:"status"`

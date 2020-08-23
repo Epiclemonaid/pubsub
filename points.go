@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"strings"
+	"time"
 )
 
 const pointsActionTopicPrefix = "channel-points-channel-v1."
@@ -35,14 +36,14 @@ func parsePointsAction(bytes []byte) (*PointsAction, error) {
 	return &data.Data, nil
 }
 
-func parseChannelIDFromPointsTopic(topic string) (string, error) {
-	parts := strings.Split(topic, ".")
-	if len(parts) != 3 {
-		return "", errors.New("Unable to parse channel ID from Points topic")
-	}
-
-	return parts[2], nil
-}
+//func parseChannelIDFromPointsTopic(topic string) (string, error) {
+//	parts := strings.Split(topic, ".")
+//	if len(parts) != 3 {
+//		return "", errors.New("Unable to parse channel ID from Points topic")
+//	}
+//
+//	return parts[2], nil
+//}
 
 // ModerationActionTopic returns a properly formatted moderation action topic string with the given user and channel ID arguments
 func PointsActionTopic(channelID string) string {
