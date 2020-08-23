@@ -2,9 +2,9 @@ package twitchpubsub
 
 import (
 	"encoding/json"
-	"errors"
+//	"errors"
 	"fmt"
-	"strings"
+//	"strings"
 	"time"
 )
 
