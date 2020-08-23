@@ -7,7 +7,7 @@ import (
 	"errors"
 	"fmt"
 	"strings"
-//	"time"
+	"time"
 )
 
 const pointsEventTopicPrefix = "channel-points-channel-v1."
