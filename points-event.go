@@ -18,7 +18,9 @@ type PointsEvent struct {
 	Redemption  string `json:"redemption"`
 	Channel_id  string `json:"channel_id"`
 	Redeemed_at string `json:"redeemed_at"`
-	Reward      string `json"reward"`
+	Reward struct {
+		Id string `json:"id"`
+	}`json"reward"`
 	User_input  string `json:"user_input"`
 	Status      string `json:"status"`
 }
