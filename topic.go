@@ -17,6 +17,7 @@ type websocketTopic struct {
 
 func hashTopic(t *websocketTopic) topicHash {
 	return topicHash(fmt.Sprintf("%s:%s", t.name, t.authToken))
+	fmt.Println("this step")
 }
 
 func newTopic(name, authToken string) *websocketTopic {

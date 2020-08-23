@@ -30,6 +30,9 @@ func getMessageType(topic string) messageType {
 	if strings.HasPrefix(topic, pointsEventTopicPrefix) {
 		return messageTypePointsEvent
 	}
+	if topic == "reward-redeemed" {
+		fmt.Println("reward redeemed type")
+	}
 
 	return messageTypeUnknown
 }
