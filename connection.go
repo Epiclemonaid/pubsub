@@ -238,7 +238,7 @@ func (c *connection) parse(b []byte) (err error) {
 		return
 
 	case "reward-redeemed":
-		return c.parseMessage(b)
+		return c.parseRedeem(b)
 
 	case "MESSAGE":
 		return c.parseMessage(b)
@@ -250,6 +250,42 @@ func (c *connection) parse(b []byte) (err error) {
 		// fmt.Println("Received unknown message:", string(b))
 		return
 	}
+}
+
+func (c *connection) parseRedeem(b []byte) error {
+	type message struct {
+		Data struct {
+			Redemption string `json:"redemption"`
+			// Message is an escaped json string
+			user_input string `json:"user_input"`
+		} `json:"data"`
+	}
+	msg := message{}
+	if err := json.Unmarshal(b, &msg); err != nil {
+		fmt.Println("[go-twitch-pubsub] Error unmarshalling incoming message:", err)
+		return nil
+	}
+
+	innerMessageBytes := []byte(msg.Data.Redemption)
+
+	switch getMessageType(msg.Data.Redemption) {
+	case messageTypePointsEvent:
+		d, err := parsePointsEvent(innerMessageBytes)
+		if err != nil {
+			return err
+		}
+		c.messageBus <- sharedMessage{
+			Redemption: msg.Data.Redemption,
+			User_input: d,
+		}
+
+	default:
+		fallthrough
+	case messageTypeUnknown:
+		// This can be used while implementing new message types
+	}
+
+	return nil
 }
 
 func (c *connection) parseMessage(b []byte) error {
