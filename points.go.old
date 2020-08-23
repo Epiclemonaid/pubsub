@@ -11,12 +11,11 @@ const pointsActionTopicPrefix = "channel-points-channel-v1."
 
 // ModerationAction describes an incoming "Moderation" action coming from Twitch's PubSub servers
 type PointsAction struct {
-	Type       string `json:"type"`
+	Timestamp   time.Time `json:"timestamp"`
 	Redemption []RedemptionData
-	User_input string `json: user_input`
-	Status     string `json:status`
+	User_input  string `json:"user_input"`
+	Status      string `json:"status"`
 }
-
 
 type RedemptionData struct {
 	Id                   string `json:id`

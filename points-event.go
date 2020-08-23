@@ -16,11 +16,11 @@ const pointsEventTopicPrefix = "channel-points-channel-v1."
 type PointsEvent struct {
 	Timestamp   time.Time `json:"timestamp"`
 	Redemption  string `json:"redemption"`
-	User_input  string `json:"user_input"`
-	Status      string `json:"status"`
 	Channel_id  string `json:"channel_id"`
 	Redeemed_at string `json:"redeemed_at"`
 	Reward      string `json"reward"`
+	User_input  string `json:"user_input"`
+	Status      string `json:"status"`
 }
 
 type outerPointsEvent struct {
