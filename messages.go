@@ -14,6 +14,7 @@ const (
 	messageTypeModerationAction
 	messageTypeBitsEvent
 	messageTypePointsEvent
+	messageTypePointsAction
 )
 
 func getMessageType(topic string) messageType {
@@ -24,6 +25,9 @@ func getMessageType(topic string) messageType {
 		return messageTypeBitsEvent
 	}
 	if strings.HasPrefix(topic, pointsActionTopicPrefix) {
+		return messageTypePointsEvent
+	}
+	if strings.HasPrefix(topic, pointsEventTopicPrefix) {
 		return messageTypePointsEvent
 	}
 
