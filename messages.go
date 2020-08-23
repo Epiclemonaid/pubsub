@@ -1,7 +1,9 @@
 package twitchpubsub
 
-import "strings"
-
+import (
+	"strings"
+	"fmt"
+)
 // Base TODO: Refactor
 type Base struct {
 	Type string `json:"type"`

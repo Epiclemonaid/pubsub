@@ -256,8 +256,7 @@ func (c *connection) parseRedeem(b []byte) error {
 	type message struct {
 		Data struct {
 			Redemption string `json:"redemption"`
-			// Message is an escaped json string
-			user_input string `json:"user_input"`
+			User_input string `json:"user_input"`
 		} `json:"data"`
 	}
 	msg := message{}
