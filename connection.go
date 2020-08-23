@@ -237,6 +237,9 @@ func (c *connection) parse(b []byte) (err error) {
 		c.onPong()
 		return
 
+	case "reward-redeemed":
+		return c.parseMessage(b)
+
 	case "MESSAGE":
 		return c.parseMessage(b)
 
