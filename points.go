@@ -11,36 +11,14 @@ const pointsActionTopicPrefix = "channel-points-channel-v1."
 
 // ModerationAction describes an incoming "Moderation" action coming from Twitch's PubSub servers
 type PointsAction struct {
-	Type       string `json:"type"`
-	Redemption []RedemptionData
-	User_input string `json: user_input`
-	Status     string `json:status`
-}
-
-
-type RedemptionData struct {
-	Id                   string `json:id`
-	User                 string `json:user`
-	Channel_id           int    `json:channel_id`
-	Redeemed_at          string `json:redeemd_at`
-	Reward []RewardInfo
-	Background_color     int    `json:background_color`
-	Is_enabled           bool   `json:is_enabled`
-	Is_paused            bool   `json:is_paused`
-	Is_in_stock          bool   `json:is_in_stock`
-	Should_redemptions_skip_request_queue bool `json:should_redemptions_skip_request_queue`
-	//Max_per_stream
-}
-
-type RewardInfo struct {
-	Id                     string `json:id`
-	Channel_id             int    `json:channel_id`
-	Title                  string `json:title`
-	Prompt                 string `json:prompt`
-	Cost                   int    `json:cost`
-	Is_user_input_required bool   `json:is_user_input_required`
-	Is_sub_only            bool   `json:is_sub_only`
-	//Max_per_stream
+	Timestamp  time.time `json:"timestamp"`
+	Redemption  string `json:"redemption"`
+	User_input  string `json:"user_input"`
+	Status      string `json:"status"`
+	Channel_id  string `json:"channel_id"`
+	Redeemed_at string `json:"redeemed_at"`
+	Reward      string `json"reward"`
+	
 }
 
 type outerPointsAction struct {
@@ -67,7 +45,7 @@ func parseChannelIDFromPointsTopic(topic string) (string, error) {
 }
 
 // ModerationActionTopic returns a properly formatted moderation action topic string with the given user and channel ID arguments
-func PointsActionTopic(userID, channelID string) string {
-	const f = `channel-points-channel-v1.%s.%s`
-	return fmt.Sprintf(f, userID, channelID)
+func PointsActionTopic(channelID string) string {
+	const f = `channel-points-channel-v1.%s`
+	return fmt.Sprintf(f, channelID)
 }
