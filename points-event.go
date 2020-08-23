@@ -14,15 +14,19 @@ const pointsEventTopicPrefix = "channel-points-channel-v1."
 
 // BitsEvent describes an incoming "Bit" action coming from Twitch's PubSub servers
 type PointsEvent struct {
-	Timestamp   string `json:"timestamp"`
-	Redemption  string `json:"redemption"`
-	Channel_id  string `json:"channel_id"`
-	Redeemed_at string `json:"redeemed_at"`
-	Reward struct {
-		Id string `json:"id"`
-	}`json"reward"`
-	User_input  string `json:"user_input"`
-	Status      string `json:"status"`
+	UserName         string    `json:"user_name"`
+	ChannelName      string    `json:"channel_name"`
+	UserID           string    `json:"user_id"`
+	ChannelID        string    `json:"channel_id"`
+	Time             time.Time `json:"time"`
+	ChatMessage      string    `json:"chat_message"`
+	BitsUsed         int       `json:"bits_used"`
+	TotalBitsUsed    int       `json:"total_bits_used"`
+	Context          string    `json:"context"`
+	BadgeEntitlement struct {
+		NewVersion      int `json:"new_version"`
+		PreviousVersion int `json:"previous_version"`
+	} `json:"badge_entitlement"`
 }
 
 type outerPointsEvent struct {
