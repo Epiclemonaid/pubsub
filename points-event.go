@@ -48,6 +48,6 @@ func parseChannelIDFromPointsTopic(topic string) (string, error) {
 
 // BitsEventTopic returns a properly formatted bits event topic string with the given channel ID argument
 func PointsEventTopic(channelID string) string {
-	const f = `channel-point-channel-v1.%s`
+	const f = `channel-points-channel-v1.%s`
 	return fmt.Sprintf(f, channelID)
 }
