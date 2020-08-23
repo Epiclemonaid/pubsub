@@ -25,7 +25,7 @@ func getMessageType(topic string) messageType {
 		return messageTypeBitsEvent
 	}
 	if strings.HasPrefix(topic, pointsActionTopicPrefix) {
-		return messageTypePointsEvent
+		return messageTypePointsAction
 	}
 	if strings.HasPrefix(topic, pointsEventTopicPrefix) {
 		return messageTypePointsEvent
