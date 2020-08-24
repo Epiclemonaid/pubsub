@@ -29,14 +29,13 @@ type connection struct {
 
 	messageBus chan sharedMessage
 
-	messageBusp chan sharedPoints
 
 	doReconnect bool
 
 	topics []*websocketTopic
 }
 
-func newConnection(host string, messageBusp messageBusType) *connection {
+func newConnection(host string, messageBus messageBusType) *connection {
 	return &connection{
 		host: host,
 
@@ -47,7 +46,6 @@ func newConnection(host string, messageBusp messageBusType) *connection {
 		readerStop: make(chan bool),
 
 		messageBus: messageBus,
-		messageBusp: messageBusp,
 	}
 }
 
@@ -241,7 +239,7 @@ func (c *connection) parse(b []byte) (err error) {
 		return
 
 	case "reward-redeemed":
-		return c.parseRedeem(b)
+		fmt.Println("this is redeemed")
 
 	case "MESSAGE":
 		return c.parseMessage(b)
@@ -255,38 +253,6 @@ func (c *connection) parse(b []byte) (err error) {
 	}
 }
 
-func (c *connection) parseRedeem(b []byte) error {
-	type message struct {
-		Data struct {
-			Redemption string `json:"redemption"`
-		} `json:"data"`
-	}
-	msg := message{}
-	if err := json.Unmarshal(b, &msg); err != nil {
-		fmt.Println("[go-twitch-pubsub] Error unmarshalling incoming message:", err)
-		return nil
-	}
-
-	innerMessageBytes := []byte(msg.Data.Redemption)
-
-	switch getMessageType(msg.Data.Redemption) {
-	case messageTypePointsEvent:
-		d, err := parsePointsEvent(innerMessageBytes)
-		if err != nil {
-			return err
-		}
-		c.messageBusp <- sharedPoints{
-			Redemption: d,
-		}
-
-	default:
-		fallthrough
-	case messageTypeUnknown:
-		// This can be used while implementing new message types
-	}
-
-	return nil
-}
 
 func (c *connection) parseMessage(b []byte) error {
 	type message struct {
