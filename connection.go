@@ -29,6 +29,8 @@ type connection struct {
 
 	messageBus chan sharedMessage
 
+	messageBusp chan sharedPoints
+
 	doReconnect bool
 
 	topics []*websocketTopic
@@ -45,6 +47,7 @@ func newConnection(host string, messageBus messageBusType) *connection {
 		readerStop: make(chan bool),
 
 		messageBus: messageBus,
+		messageBusp: messageBusp,
 	}
 }
 
@@ -272,7 +275,7 @@ func (c *connection) parseRedeem(b []byte) error {
 		if err != nil {
 			return err
 		}
-		c.messageBus <- sharedPoints{
+		c.messageBusp <- sharedPoints{
 			Redemption: d,
 		}
 
