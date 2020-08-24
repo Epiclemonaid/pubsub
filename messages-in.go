@@ -9,6 +9,9 @@ type sharedMessage struct {
 	Message interface{}
 }
 
+type sharedPoints struct {
+	Redemption   interface{}
+}
 // InnerData TODO: Refactor
 type InnerData struct {
 	Data        json.RawMessage `json:"data"`

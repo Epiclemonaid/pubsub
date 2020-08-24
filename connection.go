@@ -272,7 +272,7 @@ func (c *connection) parseRedeem(b []byte) error {
 		if err != nil {
 			return err
 		}
-		c.messageBus <- sharedMessage{
+		c.messageBus <- sharedPoints{
 			Redemption: d,
 		}
 
