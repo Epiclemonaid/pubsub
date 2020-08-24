@@ -240,6 +240,7 @@ func (c *connection) parse(b []byte) (err error) {
 
 	case "reward-redeemed":
 		fmt.Println("this is redeemed")
+		return
 
 	case "MESSAGE":
 		return c.parseMessage(b)
