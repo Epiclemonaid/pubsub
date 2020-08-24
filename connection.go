@@ -256,7 +256,6 @@ func (c *connection) parseRedeem(b []byte) error {
 	type message struct {
 		Data struct {
 			Redemption string `json:"redemption"`
-			User_input string `json:"user_input"`
 		} `json:"data"`
 	}
 	msg := message{}
@@ -274,8 +273,7 @@ func (c *connection) parseRedeem(b []byte) error {
 			return err
 		}
 		c.messageBus <- sharedMessage{
-			Redemption: msg.Data.Redemption,
-			User_input: d,
+			Redemption: d,
 		}
 
 	default:
