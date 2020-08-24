@@ -36,7 +36,7 @@ type connection struct {
 	topics []*websocketTopic
 }
 
-func newConnection(host string, messageBus messageBusType) *connection {
+func newConnection(host string, messageBusp messageBusType) *connection {
 	return &connection{
 		host: host,
 
